@@ -23,8 +23,9 @@ const Form = () => {
   };
 
   return (
+    <div className="flex justify-center align-middle my-8">
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input
+      <input className="border border-black border-5"
         placeholder="Email"
         type="email"
         {...register("email", {
@@ -35,7 +36,7 @@ const Form = () => {
       <br />
       {errors.email && <span>{errors.email.message}</span>}
       <br />
-      <input
+      <input className="border border-black border-5"
         placeholder="Username"
         type="text"
         {...register("username", {
@@ -46,7 +47,7 @@ const Form = () => {
       <br />
       {errors.username && <span>{errors.username.message}</span>}
       <br />
-      <input
+      <input className="border border-black border-5"
         placeholder="Password"
         type="password"
         {...register("password", {
@@ -57,8 +58,9 @@ const Form = () => {
       <br />
       {errors.password && <span>{errors.password.message}</span>}
       <br />
-      <input type="submit" />
+      <button className="border border-black border-5" type="submit">Submit</button>
     </form>
+    </div>
   );
 };
 

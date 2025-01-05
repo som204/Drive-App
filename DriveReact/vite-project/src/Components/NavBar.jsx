@@ -25,6 +25,7 @@ export default function NavBar() {
             News
           </Typography>
           <Button color="inherit">Login</Button>
+
         </Toolbar>
       </AppBar>
     </Box>

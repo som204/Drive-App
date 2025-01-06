@@ -17,9 +17,35 @@ const VisuallyHiddenInput = styled('input')({
 
 export default function Home() {
 
-    const handleFile = (event)=>{
-        console.log(event.target.files);
-    };
+    const handleFile = async (event) => {
+        const file = event.target.files[0]; 
+        const formData = new FormData();
+      formData.append('file', file);// Access the first file from the FileList
+        if (!file) {
+          alert("No file selected!");
+          return;
+        }
+      
+        try {
+          const response = await fetch("http://localhost:3000/upload", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+            },
+            body: formData, // Send the file directly as binary data
+          });
+      
+          if (response.ok) {
+            const result = await response.text();
+            console.log("File uploaded successfully:", result);
+          } else {
+            console.error("Error uploading file:", response.statusText);
+          }
+        } catch (error) {
+          console.error("Error during file upload:", error);
+        }
+      };
+      
 
   return (
     <div className=' flex justify-center align-middle my-10'>
